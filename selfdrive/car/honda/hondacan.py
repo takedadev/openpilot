@@ -57,20 +57,26 @@ def create_acc_commands(packer, enabled, active, accel, gas, stopping, car_finge
   standstill = 1 if active and stopping else 0
   standstill_release = 1 if active and not stopping else 0
 
+  # common ACC_CONTROL values
+  acc_control_values = {
+    'ACCEL_COMMAND': accel_command,
+    'STANDSTILL': standstill,
+  }
+
   if car_fingerprint in HONDA_BOSCH_RADARLESS:
-    acc_control_values = {
+    acc_control_values.update({
       "CONTROL_ON": enabled,
       "CONTROL_OFF": 1,  # TODO: not sure this signal is needed
-    }
+    })
   else:
-    acc_control_values = {
+    acc_control_values.update({
       # setting CONTROL_ON causes car to set POWERTRAIN_DATA->ACC_STATUS = 1
       "CONTROL_ON": 5 if enabled else 0,
       "GAS_COMMAND": gas_command,  # used for gas
       "BRAKE_LIGHTS": braking,
       "BRAKE_REQUEST": braking,
       "STANDSTILL_RELEASE": standstill_release,
-    }
+    })
     acc_control_on_values = {
       "SET_TO_3": 0x03,
       "CONTROL_ON": enabled,
@@ -80,8 +86,6 @@ def create_acc_commands(packer, enabled, active, accel, gas, stopping, car_finge
     }
     commands.append(packer.make_can_msg("ACC_CONTROL_ON", bus, acc_control_on_values))
 
-  acc_control_values['ACCEL_COMMAND'] = accel_command
-  acc_control_values['STANDSTILL'] = standstill
   commands.append(packer.make_can_msg("ACC_CONTROL", bus, acc_control_values))
   return commands
 
@@ -106,7 +110,7 @@ def create_bosch_supplemental_1(packer, car_fingerprint):
   return packer.make_can_msg("BOSCH_SUPPLEMENTAL_1", bus, values)
 
 
-def create_ui_commands(packer, CP, enabled, pcm_speed, hud, is_metric, acc_hud, lkas_hud, gas_override):
+def create_ui_commands(packer, CP, enabled, pcm_speed, hud, is_metric, acc_hud, lkas_hud):
   commands = []
   bus_pt = get_pt_bus(CP.carFingerprint)
   radar_disabled = CP.carFingerprint in (HONDA_BOSCH - HONDA_BOSCH_RADARLESS) and CP.openpilotLongitudinalControl
@@ -114,7 +118,7 @@ def create_ui_commands(packer, CP, enabled, pcm_speed, hud, is_metric, acc_hud, 
 
   if CP.openpilotLongitudinalControl:
     acc_hud_values = {
-      'CRUISE_SPEED': 255 if gas_override else hud.v_cruise,
+      'CRUISE_SPEED': hud.v_cruise,
       'ENABLE_MINI_CAR': 1 if enabled else 0,
       'HUD_DISTANCE': 0,  # max distance setting on display
       'IMPERIAL_UNIT': int(not is_metric),

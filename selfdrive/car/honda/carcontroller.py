@@ -117,7 +117,6 @@ class CarController:
     self.brake_last = 0.
     self.apply_brake_last = 0
     self.last_pump_ts = 0.
-    self.last_stopping_frame = 0
 
     self.accel = 0.0
     self.speed = 0.0
@@ -129,17 +128,9 @@ class CarController:
     actuators = CC.actuators
     hud_control = CC.hudControl
 
-    if self.CP.carFingerprint in HONDA_BOSCH_RADARLESS:
-      hud_v_cruise = hud_control.setSpeed * (CV.MS_TO_KPH if CS.is_metric else CV.MS_TO_MPH) if hud_control.speedVisible else 255
-      if CC.longActive and (actuators.longControlState == LongCtrlState.stopping):
-        if self.last_stopping_frame == 0:
-          self.last_stopping_frame = self.frame
-        if self.frame - self.last_stopping_frame > 400:
-          hud_v_cruise = 252
-      else:
-        self.last_stopping_frame = 0
-    else:
-      hud_v_cruise = hud_control.setSpeed * CV.MS_TO_MPH if hud_control.speedVisible else 255
+    conversion = (CV.MS_TO_KPH if CS.is_metric else CV.MS_TO_MPH) if self.CP.carFingerprint in HONDA_BOSCH_RADARLESS else CV.MS_TO_KPH
+    hud_v_cruise = 255 if not hud_control.speedVisible or CC.cruiseControl.override else hud_control.setSpeed * conversion
+
     pcm_cancel_cmd = CC.cruiseControl.cancel
 
     if CC.longActive:
@@ -260,7 +251,7 @@ class CarController:
     if self.frame % 10 == 0:
       hud = HUDData(int(pcm_accel), int(round(hud_v_cruise)), hud_control.leadVisible,
                     hud_control.lanesVisible, fcw_display, acc_alert, steer_required)
-      can_sends.extend(hondacan.create_ui_commands(self.packer, self.CP, CC.enabled, pcm_speed, hud, CS.is_metric, CS.acc_hud, CS.lkas_hud, CC.cruiseControl.override))
+      can_sends.extend(hondacan.create_ui_commands(self.packer, self.CP, CC.enabled, pcm_speed, hud, CS.is_metric, CS.acc_hud, CS.lkas_hud))
 
       if self.CP.openpilotLongitudinalControl and self.CP.carFingerprint not in HONDA_BOSCH:
         self.speed = pcm_speed

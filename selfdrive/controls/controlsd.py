@@ -241,7 +241,7 @@ class Controls:
       self.last_on_ramp_right_timer = 0.0
 
     desired_dir = LaneChangeDirection.none
-    if CS.vEgo > 15.:
+    if CS.vEgo > 0.:
       if self.laneline_filters[0].x > 0.3 and self.last_on_ramp_right and self.last_on_ramp_right_timer > 2.0:
         desired_dir = LaneChangeDirection.left
       elif self.laneline_filters[3].x > 0.5 and self.sm['navInstruction'].maneuverType == 'off ramp' and \

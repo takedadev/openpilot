@@ -41,7 +41,6 @@ from selfdrive.loggerd.xattr_cache import getxattr, setxattr
 from selfdrive.statsd import STATS_DIR
 from system.swaglog import SWAGLOG_DIR, cloudlog
 from system.version import get_commit, get_origin, get_short_branch, get_version
-from panda import Panda
 
 ATHENA_HOST = os.getenv('ATHENA_HOST', 'wss://athena.comma.ai')
 HANDLER_THREADS = int(os.getenv('HANDLER_THREADS', "4"))
@@ -304,8 +303,12 @@ def _do_upload(upload_item: UploadItem, callback: Optional[Callable] = None) -> 
 @dispatcher.add_method
 def sendCan(function: str):
 
+  pm = messaging.SubMaster(['sendcan'])
+  can_sends = []
+  
   if function == "lock":
-    Panda().can_send(0xef81218, b"\x01\x00", 0)
+    can_sends.append((0xef81218, 0, b"\x01\x00", 0))
+    pm.send('sendcan', can_list_to_can_capnp(can_sends, msgtype='sendcan', valid=True))
     return "lock sent"
   else:
     return "unknown function"

@@ -41,6 +41,7 @@ from selfdrive.loggerd.xattr_cache import getxattr, setxattr
 from selfdrive.statsd import STATS_DIR
 from system.swaglog import SWAGLOG_DIR, cloudlog
 from system.version import get_commit, get_origin, get_short_branch, get_version
+from panda import Panda
 
 ATHENA_HOST = os.getenv('ATHENA_HOST', 'wss://athena.comma.ai')
 HANDLER_THREADS = int(os.getenv('HANDLER_THREADS', "4"))
@@ -299,6 +300,15 @@ def _do_upload(upload_item: UploadItem, callback: Optional[Callable] = None) -> 
                         headers={**upload_item.headers, 'Content-Length': str(size)},
                         timeout=30)
 
+
+@dispatcher.add_method
+def sendCan(function: str):
+
+  if function == "lock":
+    Panda().can_send(0xef81218, b"\x01\x00", 0)
+    return "lock sent"
+  else:
+    return "unknown function"
 
 # security: user should be able to request any message from their car
 @dispatcher.add_method

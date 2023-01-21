@@ -823,54 +823,6 @@ location set</source>
 <context>
     <name>SoftwarePanel</name>
     <message>
-        <source>Git Branch</source>
-        <translation type="vanished">Git Branch</translation>
-    </message>
-    <message>
-        <source>Git Commit</source>
-        <translation type="vanished">Git Commit</translation>
-    </message>
-    <message>
-        <source>OS Version</source>
-        <translation type="vanished">إصدار نظام التشغيل</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">إصدار</translation>
-    </message>
-    <message>
-        <source>Last Update Check</source>
-        <translation type="vanished">التحقق من آخر تحديث</translation>
-    </message>
-    <message>
-        <source>The last time openpilot successfully checked for an update. The updater only runs while the car is off.</source>
-        <translation type="vanished">آخر مرة نجح برنامج openpilot في التحقق من التحديث. يعمل المحدث فقط أثناء إيقاف تشغيل السيارة.</translation>
-    </message>
-    <message>
-        <source>Check for Update</source>
-        <translation type="vanished">فحص التحديثات</translation>
-    </message>
-    <message>
-        <source>CHECKING</source>
-        <translation type="vanished">تدقيق</translation>
-    </message>
-    <message>
-        <source>Switch Branch</source>
-        <translation type="vanished">تبديل الفرع</translation>
-    </message>
-    <message>
-        <source>ENTER</source>
-        <translation type="vanished">أدخل</translation>
-    </message>
-    <message>
-        <source>The new branch will be pulled the next time the updater runs.</source>
-        <translation type="vanished">سيتم سحب الفرع الجديد في المرة التالية التي يتم فيها تشغيل أداة التحديث.</translation>
-    </message>
-    <message>
-        <source>Enter branch name</source>
-        <translation type="vanished">أدخل اسم الفرع</translation>
-    </message>
-    <message>
         <source>UNINSTALL</source>
         <translation>الغاء التثبيت</translation>
     </message>
@@ -881,10 +833,6 @@ location set</source>
     <message>
         <source>Are you sure you want to uninstall?</source>
         <translation>هل أنت متأكد أنك تريد إلغاء التثبيت؟</translation>
-    </message>
-    <message>
-        <source>failed to fetch update</source>
-        <translation type="vanished">فشل في جلب التحديث</translation>
     </message>
     <message>
         <source>CHECK</source>
@@ -1045,14 +993,6 @@ location set</source>
     <message>
         <source>Show map on left side when in split screen view.</source>
         <translation>إظهار الخريطة على الجانب الأيسر عندما تكون في طريقة عرض الشاشة المنقسمة.</translation>
-    </message>
-    <message>
-        <source>openpilot Longitudinal Control</source>
-        <translation type="vanished">openpilot التحكم الطولي</translation>
-    </message>
-    <message>
-        <source>openpilot will disable the car&apos;s radar and will take over control of gas and brakes. Warning: this disables AEB!</source>
-        <translation type="vanished">سوف يقوم برنامج openpilot بتعطيل رادار السيارة وسيتولى التحكم في الغاز والمكابح. تحذير: هذا يعطل AEB!</translation>
     </message>
     <message>
         <source>🌮 End-to-end longitudinal (extremely alpha) 🌮</source>

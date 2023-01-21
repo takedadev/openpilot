@@ -60,11 +60,11 @@
     </message>
     <message>
         <source>Cellular Metered</source>
-        <translation type="unfinished"></translation>
+        <translation>خدمة خلوية محدودة</translation>
     </message>
     <message>
         <source>Prevent large data uploads when on a metered connection</source>
-        <translation type="unfinished"></translation>
+        <translation>منع تحميل البيانات الكبيرة عندما تكون على اتصال محدود</translation>
     </message>
 </context>
 <context>
@@ -892,35 +892,35 @@ location set</source>
     </message>
     <message>
         <source>Updates are only downloaded while the car is off.</source>
-        <translation type="unfinished"></translation>
+        <translation>يتم تنزيل التحديثات فقط أثناء إيقاف تشغيل السيارة.</translation>
     </message>
     <message>
         <source>Current Version</source>
-        <translation type="unfinished"></translation>
+        <translation>الإصدار الحالي</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>تحميل</translation>
     </message>
     <message>
         <source>Install Update</source>
-        <translation type="unfinished"></translation>
+        <translation>تثبيت التحديث</translation>
     </message>
     <message>
         <source>INSTALL</source>
-        <translation type="unfinished"></translation>
+        <translation>ثَبَّتَ</translation>
     </message>
     <message>
         <source>Target Branch</source>
-        <translation type="unfinished"></translation>
+        <translation>الفرع المستهدف</translation>
     </message>
     <message>
         <source>SELECT</source>
-        <translation type="unfinished"></translation>
+        <translation>اختار</translation>
     </message>
     <message>
         <source>Select a branch</source>
-        <translation type="unfinished"></translation>
+        <translation>اختار الفرع</translation>
     </message>
 </context>
 <context>
@@ -1056,27 +1056,27 @@ location set</source>
     </message>
     <message>
         <source>🌮 End-to-end longitudinal (extremely alpha) 🌮</source>
-        <translation type="unfinished"></translation>
+        <translation>🌮 طولية من طرف إلى طرف (مبكر للغاية) 🌮</translation>
     </message>
     <message>
         <source>Experimental openpilot Longitudinal Control</source>
-        <translation type="unfinished"></translation>
+        <translation>تحكم طولي openpilot تجريبي</translation>
     </message>
     <message>
         <source>&lt;b&gt;WARNING: openpilot longitudinal control is experimental for this car and will disable AEB.&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;تحذير: يعد التحكم الطولي openpilot تجريبيًا لهذه السيارة وسوف يقوم بتعطيل AEB.&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Let the driving model control the gas and brakes. openpilot will drive as it thinks a human would. Super experimental.</source>
-        <translation type="unfinished"></translation>
+        <translation>اسمح لنموذج القيادة بالتحكم في الغاز والفرامل. سوف يقود openpilot كما يعتقد الإنسان. تجريبي جدا.</translation>
     </message>
     <message>
         <source>openpilot longitudinal control is not currently available for this car.</source>
-        <translation type="unfinished"></translation>
+        <translation>التحكم الطولي openpilot غير متوفر حاليًا لهذه السيارة.</translation>
     </message>
     <message>
         <source>Enable experimental longitudinal control to enable this.</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بتمكين التحكم الطولي التجريبي لتمكين هذا.</translation>
     </message>
 </context>
 <context>
